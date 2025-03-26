@@ -5,7 +5,7 @@ const userRoute = require("./routes/user");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const {
-  checkForAuthenticationCookie,
+    checkForAuthenticationCookie,
 } = require("./middlewares/authentication");
 require("dotenv").config(); // Added to load environment variables
 
@@ -14,18 +14,17 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => {
-    console.log("MongoDB Connected");
-    app.listen(PORT, () => {
-      console.log(
-        `Server started at PORT: ${PORT} in ${
-          process.env.NODE_ENV || "development"
-        } mode`
-      );
-    });
-  })
-  .catch((err) => console.error("MongoDB Connection Error:", err));
+    .connect(process.env.MONGO_URL)
+    .then(() => {
+        console.log("MongoDB Connected");
+        app.listen(PORT, () => {
+            console.log(
+                `Server started at PORT: ${PORT} in ${process.env.NODE_ENV || "development"
+                } mode`
+            );
+        });
+    })
+    .catch((err) => console.error("MongoDB Connection Error:", err));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
@@ -39,11 +38,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Home route
 app.get("/", (req, res) => {
-  res.render("home", {
-    user: req.user || null,
-  });
+    res.render("home", {
+        user: req.user || null,
+    });
 });
 
 app.use("/user", userRoute);
-
-
