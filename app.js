@@ -38,11 +38,11 @@ app.get('/', (req, res) => {
 // User routes
 app.use('/user', userRoute);
 
-// Global error handling middleware (Added)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something went wrong!');
-});
+// // Global error handling middleware (Added)
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send('Something went wrong!');
+// });
 
 // Start server
 app.listen(PORT, () => {
